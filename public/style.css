@@ -1,175 +1,531 @@
 
-    /* 1. Basic page settings */
-    * {
-    box-sizing: border-box;
-    }
+/* 1. Theme and global settings */
+* {
+  box-sizing: border-box;
+}
 
-    body {
+:root {
+  --navy: #142d4e;
+  --blue: #2864e8;
+  --blue-dark: #1d4fc2;
+  --text: #243247;
+  --muted: #718096;
+  --border: #e2e8f0;
+  --background: #f3f6fb;
+  --white: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 36px 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at top left, #e4edff 0, transparent 38%),
+    var(--background);
+}
+
+.app-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* 2. Header */
+.page-header {
+  margin-bottom: 30px;
+}
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 38px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: 0 7px 18px rgb(20 45 78 / 18%);
+}
+
+.brand-mark svg {
+  display: block;
+  width: 31px;
+  height: 31px;
+}
+
+.student-info {
+  padding: 10px 14px;
+  border: 1px solid #dce5f2;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 88%);
+  text-align: right;
+}
+
+.student-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.7;
+}
+
+.student-info .student-name {
+  color: var(--navy);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--blue);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  color: var(--navy);
+  font-size: clamp(1.8rem, 5vw, 2.65rem);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1.2;
+}
+
+.page-intro > p:last-child {
+  max-width: 650px;
+  margin: 0;
+  color: var(--muted);
+}
+
+/* 3. Project summary cards */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.summary-card {
+  position: relative;
+  min-width: 0;
+  padding: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  background: var(--white);
+  box-shadow: 0 8px 25px rgb(30 55 90 / 4%);
+}
+
+.summary-icon {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 13px;
+  border-radius: 11px;
+  background: #eaf0ff;
+  color: var(--blue);
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.summary-card p {
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.summary-card strong {
+  display: block;
+  color: var(--navy);
+  font-size: 1.9rem;
+  line-height: 1.3;
+}
+
+.progress-card .summary-icon {
+  background: #fff3d8;
+  color: #956400;
+}
+
+.completed-card .summary-icon {
+  background: #dcf7e8;
+  color: #176b43;
+}
+
+/* 4. Content panels */
+section.panel {
+  margin-bottom: 24px;
+  padding: 28px;
+  border: 1px solid #e5eaf2;
+  border-radius: 20px;
+  background: var(--white);
+  box-shadow: 0 10px 35px rgb(30 55 90 / 5%);
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.section-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  background: #eaf0ff;
+  color: var(--blue);
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 1.25rem;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.section-description {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* 5. Form */
+#project-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 20px;
+}
+
+#project-form > div:not(.form-actions) {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+label {
+  color: #34445b;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+input,
+select {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 14px;
+  border: 1px solid #d6deea;
+  border-radius: 10px;
+  background: #fbfcff;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.94rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+input::placeholder {
+  color: #9aa7b8;
+}
+
+input:hover,
+select:hover {
+  border-color: #a8bad5;
+}
+
+input:focus-visible,
+select:focus-visible {
+  border-color: var(--blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(40 100 232 / 12%);
+}
+
+/* 6. Buttons */
+.form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+button {
+  min-height: 46px;
+  padding: 11px 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+#save-button {
+  background: var(--blue);
+  color: var(--white);
+  box-shadow: 0 5px 12px rgb(40 100 232 / 18%);
+}
+
+#save-button:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+#cancel-button {
+  border-color: var(--border);
+  background: var(--white);
+  color: #44536a;
+}
+
+#cancel-button:hover {
+  background: #f3f6fb;
+}
+
+button:focus-visible {
+  outline: 3px solid #f0b429;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+#message {
+  margin: 14px 0 0;
+  color: #465872;
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
+/* 7. Project list */
+.project-panel {
+  min-height: 190px;
+}
+
+.list-heading {
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.list-tag {
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: #eef3ff;
+  color: var(--blue-dark);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.7px;
+}
+
+#empty-state {
+  margin: 0;
+  padding: 22px 16px;
+  border: 1px dashed #d6deea;
+  border-radius: 12px;
+  background: #fafcff;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+#project-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#project-list li {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: #fbfcff;
+  overflow-wrap: anywhere;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+#project-list li:hover {
+  border-color: #c8d7ef;
+  box-shadow: 0 5px 16px rgb(30 55 90 / 5%);
+}
+
+#project-list button {
+  min-height: 36px;
+  margin: 6px 5px 0 0;
+  padding: 7px 12px;
+  font-size: 0.82rem;
+}
+
+/* 8. Optional status badges */
+.status,
+.status-badge,
+.status-label {
+  display: inline-block;
+  width: fit-content;
+  margin: 6px 4px 0 0;
+  padding: 4px 9px;
+  border-radius: 7px;
+  background: #edf2f7;
+  color: #44536a;
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.status-planned,
+.status-badge.planned,
+.status-label.planned {
+  background: #fff3d8;
+  color: #8a5b00;
+}
+
+.status-in-progress,
+.status-badge.in-progress,
+.status-label.in-progress {
+  background: #e4edff;
+  color: #2453ad;
+}
+
+.status-completed,
+.status-badge.completed,
+.status-label.completed {
+  background: #dcf7e8;
+  color: #176b43;
+}
+
+/* 9. Footer */
+.page-footer {
+  padding: 6px 0 0;
+  text-align: center;
+}
+
+.page-footer p {
+  margin: 0;
+  color: #8794a7;
+  font-size: 0.8rem;
+}
+
+/* 10. Tablet and mobile layout */
+@media (max-width: 650px) {
+  body {
+    padding: 24px 14px;
+  }
+
+  .summary-grid {
+    gap: 10px;
+  }
+
+  .summary-card {
+    padding: 14px;
+  }
+
+  .summary-card strong {
+    font-size: 1.6rem;
+  }
+
+  section.panel {
+    padding: 22px 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .header-top {
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+  }
+
+  .brand-mark svg {
+    width: 27px;
+    height: 27px;
+  }
+
+  .student-info {
+    padding: 7px 9px;
+  }
+
+  .student-info p,
+  .student-info .student-name {
+    font-size: 0.65rem;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-card {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    column-gap: 12px;
+    align-items: center;
+  }
+
+  .summary-icon {
+    grid-row: span 2;
     margin: 0;
-    padding: 32px 20px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-    line-height: 1.6;
-    color: #1f2937;
-    background-color: #f8fafc;
-    }
+  }
 
-    /* 2. Main content width */
-    main {
-    width: 100%;
-    max-width: 760px;
-    margin: 0 auto;
-    }
+  .summary-card p {
+    align-self: end;
+  }
 
-    /* 3. Page heading */
-    header {
-    margin-bottom: 32px;
-    }
+  .summary-card strong {
+    align-self: start;
+    font-size: 1.4rem;
+  }
 
-    h1 {
-    margin: 0 0 8px;
-    font-size: 2rem;
-    line-height: 1.25;
-    color: #111827;
-    }
+  .list-heading {
+    gap: 8px;
+  }
 
-    header p {
-    margin: 0;
-    color: #4b5563;
-    }
+  .list-tag {
+    flex-shrink: 0;
+    font-size: 0.62rem;
+  }
 
-    /* 4. Form and project list sections */
-    section {
-    margin-bottom: 32px;
-    }
-
-    h2 {
-    margin: 0 0 18px;
-    font-size: 1.35rem;
-    line-height: 1.4;
-    color: #111827;
-    }
-
-    /* 5. Form layout */
-    #project-form {
-    display: flex;
+  .form-actions {
     flex-direction: column;
-    align-items: stretch;
-    gap: 18px;
-    }
+  }
 
-    #project-form > div {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    }
-
-    label {
-    font-weight: 600;
-    color: #374151;
-    }
-
-    /* 6. Input and dropdown styling */
-    input,
-    select {
-    display: block;
+  #save-button,
+  #cancel-button {
     width: 100%;
-    min-height: 44px;
-    padding: 10px 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    background-color: #ffffff;
-    color: #111827;
-    font: inherit;
-    }
+  }
+}
 
-    input:hover,
-    select:hover {
-    border-color: #94a3b8;
-    }
-
-    /* 7. Save and Cancel buttons */
-    button {
-    min-height: 44px;
-    padding: 10px 18px;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    font: inherit;
-    font-weight: 600;
-    cursor: pointer;
-    }
-
-    #save-button {
-    align-self: flex-start;
-    background-color: #2563eb;
-    color: #ffffff;
-    }
-
-    #save-button:hover {
-    background-color: #1d4ed8;
-    }
-
-    #cancel-button {
-    align-self: flex-start;
-    border-color: #cbd5e1;
-    background-color: #ffffff;
-    color: #374151;
-    }
-
-    #cancel-button:hover {
-    background-color: #f1f5f9;
-    }
-
-    /* 8. Visible keyboard focus */
-    input:focus-visible,
-    select:focus-visible,
-    button:focus-visible {
-    outline: 3px solid #f59e0b;
-    outline-offset: 3px;
-    }
-
-    /* 9. Status message */
-    #message {
-    margin: 14px 0 0;
-    color: #374151;
-    }
-
-    /* 10. Empty state and project list */
-    #empty-state {
-    margin: 0 0 12px;
-    color: #64748b;
-    }
-
-    #project-list {
-    margin: 0;
-    padding-left: 24px;
-    }
-
-    /* 11. Responsive layout for screens below 560px */
-    @media (max-width: 559px) {
-    body {
-        padding: 22px 16px;
-    }
-
-    header {
-        margin-bottom: 26px;
-    }
-
-    h1 {
-        font-size: 1.7rem;
-    }
-
-    section {
-        margin-bottom: 26px;
-    }
-
-    h2 {
-        font-size: 1.2rem;
-    }
-
-    #save-button,
-    #cancel-button {
-        align-self: stretch;
-    }
-    }
-
+/* 11. Reduced-motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
