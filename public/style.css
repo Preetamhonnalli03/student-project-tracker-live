@@ -1,0 +1,175 @@
+
+    /* 1. Basic page settings */
+    * {
+    box-sizing: border-box;
+    }
+
+    body {
+    margin: 0;
+    padding: 32px 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    line-height: 1.6;
+    color: #1f2937;
+    background-color: #f8fafc;
+    }
+
+    /* 2. Main content width */
+    main {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    }
+
+    /* 3. Page heading */
+    header {
+    margin-bottom: 32px;
+    }
+
+    h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+    line-height: 1.25;
+    color: #111827;
+    }
+
+    header p {
+    margin: 0;
+    color: #4b5563;
+    }
+
+    /* 4. Form and project list sections */
+    section {
+    margin-bottom: 32px;
+    }
+
+    h2 {
+    margin: 0 0 18px;
+    font-size: 1.35rem;
+    line-height: 1.4;
+    color: #111827;
+    }
+
+    /* 5. Form layout */
+    #project-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    }
+
+    #project-form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    }
+
+    label {
+    font-weight: 600;
+    color: #374151;
+    }
+
+    /* 6. Input and dropdown styling */
+    input,
+    select {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #111827;
+    font: inherit;
+    }
+
+    input:hover,
+    select:hover {
+    border-color: #94a3b8;
+    }
+
+    /* 7. Save and Cancel buttons */
+    button {
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    }
+
+    #save-button {
+    align-self: flex-start;
+    background-color: #2563eb;
+    color: #ffffff;
+    }
+
+    #save-button:hover {
+    background-color: #1d4ed8;
+    }
+
+    #cancel-button {
+    align-self: flex-start;
+    border-color: #cbd5e1;
+    background-color: #ffffff;
+    color: #374151;
+    }
+
+    #cancel-button:hover {
+    background-color: #f1f5f9;
+    }
+
+    /* 8. Visible keyboard focus */
+    input:focus-visible,
+    select:focus-visible,
+    button:focus-visible {
+    outline: 3px solid #f59e0b;
+    outline-offset: 3px;
+    }
+
+    /* 9. Status message */
+    #message {
+    margin: 14px 0 0;
+    color: #374151;
+    }
+
+    /* 10. Empty state and project list */
+    #empty-state {
+    margin: 0 0 12px;
+    color: #64748b;
+    }
+
+    #project-list {
+    margin: 0;
+    padding-left: 24px;
+    }
+
+    /* 11. Responsive layout for screens below 560px */
+    @media (max-width: 559px) {
+    body {
+        padding: 22px 16px;
+    }
+
+    header {
+        margin-bottom: 26px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    section {
+        margin-bottom: 26px;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    #save-button,
+    #cancel-button {
+        align-self: stretch;
+    }
+    }
+
